@@ -10,8 +10,8 @@ While the platform utilizes modern technologies like JWT and RBAC, the assessmen
 
   * **Target:** Open Vault Bank (REST API)
   * **Framework:** OWASP API Security Top 10 (2023)
-  * **Testing Suite:** Burp Suite, Postman, JWT.io
-  * **Key Concepts:** BOLA, Mass Assignment, Broken Authentication, BFLA
+  * **Testing Suite:** Burp Suite, xjwt.io
+  * **Key Concepts:** BOLA, Mass Assignment(BOPLA), Broken Authentication, BFLA
 
 ## 🔍 Vulnerability Summary & Remediations
 
@@ -21,10 +21,10 @@ The following table outlines the key vulnerabilities identified (API1–API9, ex
 | :--- | :--- | :--- |
 | **API1** | **Broken Object Level Authorization** | Implement resource-level authorization; use UUIDs instead of sequential IDs. |
 | **API2** | **Broken Authentication** | Replace 3-digit OTPs with secure tokens; implement strict rate limiting. |
-| **API3** | **Mass Assignment** | Use Data Transfer Objects (DTOs) to whitelist properties; set sensitive fields to read-only. |
+| **API3** | **Broken Object Property Level Authorization (Mass Assignment & Excessive Data Exposure)** | Use Data Transfer Objects (DTOs) to whitelist properties; set sensitive fields to read-only. |
 | **API4** | **Unrestricted Resource Consumption** | Set execution timeouts; implement pagination and global rate limiting. |
-| **API5** | **Broken Function Level Auth** | Apply "deny-by-default" policies and verify user roles server-side for all admin tasks. |
-| **API6** | **Unrestricted Access to Flows** | Integrate CAPTCHAs for fund transfers; implement strict business logic sequencing. |
+| **API5** | **Broken Function Level Authorization** | Apply "deny-by-default" policies and verify user roles server-side for all admin tasks. |
+| **API6** | **Unrestricted Access to Business Flows** | Integrate CAPTCHAs for fund transfers; implement strict business logic sequencing. |
 | **API8** | **Security Misconfiguration** | Transition to RS256 (Asymmetric) JWT signing; disable verbose error messages. |
 | **API9** | **Improper Inventory Management** | Decommission debug/health endpoints in production; restrict internal routes from `robots.txt`. |
 
